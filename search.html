@@ -1,36 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><!--  Here is  the use of the html 5 which cover the utf - 8 character and this one is used for covering all
+    the charcters and symbols --> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- For the better adjustment  of website in different devices -->
     <title>Search Fundraiser</title>
+    <!--  The search fundraiser titile  -->
     <style>
         body {
             background-color: lightblue; /* Background color */
+            height: 120vh;
+            margin: 0;
+            font-family: Arial;
+            flex-direction: column;
+            justify-items: auto;
+            text-justify: auto;
+            justify-content: center;
             color: white;
-            font-family: Arial, sans-serif;
+            align-items: center;
             text-align: center;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
         }
         h1 {
-            font-size: 2.5em; /* Increased font size for the title */
+            font-size: 3em; 
+        /* font size of the title */
         }
-        label, input {
-            font-size: 1.2em; /* Increased font size for input and label */
-        }
+        
         input[type="text"] {
-            padding: 10px;
-            margin-right: 10px;
-            border-radius: 5px;
+            padding: 20px;
+            margin-right: 20px;
+            border-radius: 6px;
             border: none;
         }
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        main {
+            flex-grow: 1;
+        }
+        #fundraiser-details {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        /*  colour backgorund for the search button */
         input[type="button"] {
-            padding: 10px 20px;
+            padding: 15px 20px;
             background-color: #007bff;
             color: white;
             border: none;
@@ -38,48 +70,62 @@
             cursor: pointer;
             font-size: 1.2em;
         }
+        /* Colour for the button which is in Serach buttton  */
         input[type="button"]:hover {
             background-color: #0056b3;
         }
         #data {
             margin-top: 20px;
-            font-size: 1.2em;
+            font-size: 2em;
         }
     </style>
 </head>
 <body>
-    <h1>Search Fundraiser by ID</h1>
-    
+    <header>
+        <h1>Fundraiser Details</h1>
+        <nav>
+            <!--  link for navigation the other pages  -->
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Fundraisers</a>
+            <a href="categories.html">Categories</a>
+            <a href="fundraiser.html">Fundraiser Details</a>
+        </nav>
+    </header>
+    <h1>Search Fundraiser With  ID</h1>
+    <!--  the lable indicate the customer to value will be goes in the specific section. -->
     <label for="txtID">ID: </label>
     <input type="text" id="txtID" placeholder="Enter ID" required>
     <input type="button" value="Search" onclick="let txtID=document.getElementById('txtID').value; searchByID(txtID);">
-    
+    <!--  Button which trigger search fuctionn  after click -->
     <div id="data"></div>
 
     <script>
+        /*  Here is the code for the checking the ID with search */
         function searchByID(id) {
+             /*  Here is the working on the fetching the data with requesting the data from ApI by using the ID  */
             fetch(`http://localhost:8080/api/fundraiser/${id}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
+                    /* Parse the response as JSON */
                     return response.json();
                 })
                 .then(data => {
                     const dataDiv = document.getElementById('data');
-                    dataDiv.innerHTML = ""; // Clear previous data
-
+                    dataDiv.innerHTML = ""; 
+                 /*    if  else statment for chekcing the error */ 
                     if (data) {
                         const newP = document.createElement("p");
                         newP.textContent = `Fundraiser: ${data.organizer_name}, Description: ${data.description}, City: ${data.city}`;
                         dataDiv.appendChild(newP);
                     } else {
-                        dataDiv.textContent = "No fundraiser data found.";
+                        dataDiv.textContent = "NO data is available .";
                     }
                 })
                 .catch(error => {
-                    console.error("Error fetching data:", error);
-                    document.getElementById('data').textContent = "Failed to load data.";
+                    console.error("Error........?", error);
+                    document.getElementById('data').textContent = "The number is not valid.";
                 });
         }
     </script>
