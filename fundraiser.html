@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraiser Details - Fundraising Platform</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        main {
+            flex-grow: 1;
+        }
+        #fundraiser-details {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        footer {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fundraiser Details</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Fundraisers</a>
+            <a href="categories.html">Categories</a>
+            <a href="fundraiser.html">Fundraiser Details</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="fundraiser-details">
+            <h2>Fundraiser Name</h2>
+            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida semper mauris, id vestibulum dolor condimentum vel.</p>
+            <p>Location: City, Country</p>
+            <p>Organizer: John Doe</p>
+            <p>Contact Email: john.doe@example.com</p>
+            <!-- Add more details as needed -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fundraising Platform</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript -->
+</body>
+</html>

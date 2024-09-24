@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Fundraiser</title>
+    <style>
+        body {
+            background-color: lightblue; /* Background color */
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em; /* Increased font size for the title */
+        }
+        label, input {
+            font-size: 1.2em; /* Increased font size for input and label */
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        #data {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Fundraiser by ID</h1>
+    
+    <label for="txtID">ID: </label>
+    <input type="text" id="txtID" placeholder="Enter ID" required>
+    <input type="button" value="Search" onclick="let txtID=document.getElementById('txtID').value; searchByID(txtID);">
+    
+    <div id="data"></div>
+
+    <script>
+        function searchByID(id) {
+            fetch(`http://localhost:8080/api/fundraiser/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const dataDiv = document.getElementById('data');
+                    dataDiv.innerHTML = ""; // Clear previous data
+
+                    if (data) {
+                        const newP = document.createElement("p");
+                        newP.textContent = `Fundraiser: ${data.organizer_name}, Description: ${data.description}, City: ${data.city}`;
+                        dataDiv.appendChild(newP);
+                    } else {
+                        dataDiv.textContent = "No fundraiser data found.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    document.getElementById('data').textContent = "Failed to load data.";
+                });
+        }
+    </script>
+</body>
+</html>

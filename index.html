@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--  Here is  the use of the html 5 which cover the utf - 8 character and this one is used for covering all
+      the charcters and symbols --> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- For the better adjustment  of website in different devices -->
+    <title>Home Fundraising Portal </title>
+    <!-- The  titile page of the home -->
+  <!--  The style for the  body of  this page. -->
+    <style>
+        body {
+           
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: rgb(233, 162, 162);
+            text-align: center;
+            font-family: Arial;
+            min-height: 108vh;
+            margin: 0;
+        }
+        /*  adding the space between the metioned sections  */
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        /* removing the extra margin */
+        header h1, footer p {
+            margin: 0;
+        }
+        nav a {
+            /*  adding the styling and colouring  and other stuff in the navigation area */
+            color: rgb(16, 2, 2);
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 0 15px;
+            text-decoration: none;
+           /* text-decoration: dotted;*/
+           
+            transition: background-color 0.4s, box-shadow 0.6s;
+        }
+        nav a:hover {
+            background-color: rgba(241, 238, 238, 0.422);
+            box-shadow: 0px 4px 10px rgba(247, 246, 246, 0.863);
+        }
+        main {
+            flex-grow: 1;
+        }
+        #fundraiser-list {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(247, 244, 244, 0.808);
+            border-radius: 10px;
+        }
+        /*  image alignment  in every side  */
+        img {
+            max-width: 90%;
+            height: auto;
+            margin: 23px 0;
+            border-radius: 13px;
+            box-shadow: 0px 5px 15px rgba(60, 58, 58, 0.3);
+        }
+        footer {
+            font-size: 0.8em;
+        }
+       /*@import*/
+        @media (max-width: 750px) {
+            nav a {
+                display: block;
+                margin: 11px 0;
+            }
+            img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!--  the header which is use at the  top of the website with the nav for navigation the  other page 
+          in  the code  -->
+        <h1>  Welcome on our Fundrasing Portal</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Fundraisers</a>
+            <a href="categories.html">Categories</a>
+            <a href="fundraiser.html">Fundraiser Details</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>A Way to  do Something New.</h2>
+
+        <!--  adding image in the home page with the img src code  -->
+        <img src="fundraiser.png" alt="Fundraising Campaign Banner">
+<!-- Details for the fundrasing what is currently going on or not. -->
+        <div id="fundraiser-list">
+            <!--  use of the heading  h3 for the  size and the paragraph with strong for highlighting the content -->
+            <h3>Featured Fundraisers</h3>
+            <p> No services are going on right Now Please come  back later!</p>
+        </div>
+        <p>Your support to this activity will take this Program to the next Level.</p>
+        <p><strong>How we work?</strong> Our Platform work in a team which assist in the main sectors of the industry which are Educational, poverty and Housing crisis.</p>
+        <p><strong> Your Support will be gratly appreciated.</strong></p>
+    </main>
+
+    <footer>
+        <p>&copy; © Copyright Agency and contributors 2024. ABN 12 34 56 78 910, All rights are Reserved </p>
+    </footer>
+
+<!--  footer info for the website -->
+</body>
+</html>
